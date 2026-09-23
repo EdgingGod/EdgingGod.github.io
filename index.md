@@ -6,4 +6,4 @@
 - [Millis demo](03-millis)
 
 ## Projects
-- first asighment will go here
+- [Interactive Scene Assignment](zombiegame)
