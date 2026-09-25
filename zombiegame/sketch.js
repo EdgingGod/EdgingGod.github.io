@@ -6,19 +6,21 @@
 // - describe what you did to take this project "above and beyond"
 
 // local veriables 
-let mainplayer, x, y, playerSpeed, zombieX, zombieY, zombieSize;
+let player, playerX, playerY, playerSpeed, zombieX, zombieY, zombieSize, playerHealth, turess;
 
 
 async function setup() {
   createCanvas(windowWidth, windowHeight);
   noStroke();
-  mainplayer = await loadImage('mainplayer.png');
-  x = windowWidth/2;
-  y = windowHeight/2;
-  zombieX = random(-windowWidth, windowWidth);
-  zombieY = random(-windowHeight, windowWidth);
+  player = await loadImage('player.png');
+  playerX = windowHeight/2;
+  playerY = windowHeight/2;
+  zombieX = random(-600, 600);
+  zombieY = random(-600, 600);
   zombieSize = random(50, 100);
-  playerSpeed = 3;
+  playerSpeed = 5;
+  playerHealth = 3;
+  truess = true;
 }
 
 function draw() {
@@ -26,31 +28,40 @@ function draw() {
   showingPlayer();
   movingPlayer();
   spawningZombies();
+  playerDamge();
 }
 
 //functions
 function showingPlayer(){
   imageMode(CENTER);
-  image(mainplayer, x, y, mainplayer.width/5 , mainplayer.height/5);
+  image(player, playerX, playerY, player.width/4 , player.height/4);
 }
 
 function movingPlayer(){
   if (keyIsDown("w") || keyIsDown(UP_ARROW)) {
-    y -= playerSpeed;
+    playerY -= playerSpeed;
   }
   else if (keyIsDown("s") || keyIsDown(DOWN_ARROW)) {
-    y += playerSpeed;
+    playerY += playerSpeed;
   }
   else if (keyIsDown("d") || keyIsDown(RIGHT_ARROW)) {
-    x += playerSpeed;
+    playerX += playerSpeed;
   }
   else if (keyIsDown("a") || keyIsDown(LEFT_ARROW)) {
-    x -= playerSpeed;
+    playerX -= playerSpeed;
   }
 }
 
 function spawningZombies(){
   fill("green");
-  square(zombieX, zombieY, zombieSize);
+  while (truess ===  true){
+    rectMode(CENTER);
+    square(zombieX, zombieY, zombieSize);
+  }
 }
 
+function playerDamge(){
+  // if (playerX === zombieX && playerY === zombieY){
+  //   playerHealth -= 1;
+  // }
+} 
