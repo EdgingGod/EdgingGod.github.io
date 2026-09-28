@@ -10,7 +10,7 @@ async function setup() {
 function draw() {
   drawBack();
   // console.log(millis());
-  swapstateifneeded()
+  swapstateifneeded();
 }
 
 function swapstateifneeded(){
