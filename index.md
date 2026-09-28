@@ -7,4 +7,5 @@
 - [squares demo](03-squares)
 
 ## Projects
-- [Interactive Scene Assignment](zombiegame)
+- [Interactive Scene Assignment](TIC-TAC-TOE)
+    
