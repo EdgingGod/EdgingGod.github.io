@@ -1,5 +1,5 @@
 //Intractive scene assighment
-// infinte TIC TAC TOE
+// TIC TAC TOE
 // Ali Mohamed
 // oct/2/2026
 // Used this youtube video for the main logic of bulding TIC-TAC_TOE
