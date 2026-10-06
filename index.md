@@ -7,6 +7,7 @@
 - [squares demo](03-squares)
 - [trafic light](05-traffic)
 - [bouncing circles](06-circle-bounce)
+- [perlin noise](07-noise)
 
 ## Projects
 - [Interactive Scene Assignment](TIC-TAC-TOE)
