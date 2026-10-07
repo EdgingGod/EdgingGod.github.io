@@ -11,4 +11,4 @@
 
 ## Projects
 - [Interactive Scene Assignment](TIC-TAC-TOE)
-    
+- [arrays and object noatation](array-object)
