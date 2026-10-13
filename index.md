@@ -8,6 +8,7 @@
 - [trafic light](05-traffic)
 - [bouncing circles](06-circle-bounce)
 - [perlin noise](07-noise)
+- [collision library demo](09-collision)
 
 ## Projects
 - [Interactive Scene Assignment](TIC-TAC-TOE)

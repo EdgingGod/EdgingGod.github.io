@@ -5,24 +5,63 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-let x, y;
+//Veriables
+let playerX, playerY, zombieX, zombieY;
+let playerSpeed = 3;
+let lives = 3;
+let playerdamge = false; 
 
 
 async function setup() {
   createCanvas(windowWidth, windowHeight);
-  x = width/2;
-  y = width/2;
-  fill("red");
-  rect(x, y, 500, 5000);
+  playerX = width/2;
+  playerY = height/2;
+  zombieX = random(-windowWidth, windowWidth);
+  zombieY = random(-windowHeight, windowHeight);
 }
 
 function draw() {
   background(0);
-
+  showPlayer();
+  movingPlayer();
+  spawningZombies();
+  checkingDamge();
 }
 
 
+//Functions
 
 function showPlayer(){
-  fill()''
+  fill("red");
+  rect(playerX, playerY, 40, 95);
+  rectMode(CENTER);
+}
+
+function movingPlayer(){
+  if (keyIsDown("w") || keyIsDown(UP_ARROW)) {
+    playerY -= playerSpeed;
+  }
+  if (keyIsDown("s") || keyIsDown(DOWN_ARROW)) {
+    playerY += playerSpeed;
+  }
+  if (keyIsDown("d") || keyIsDown(RIGHT_ARROW)) {
+    playerX += playerSpeed;
+  }
+  if (keyIsDown("a") || keyIsDown(LEFT_ARROW)) {
+    playerX -= playerSpeed;
+  }
+}
+
+function spawningZombies(){
+  fill("green");
+  rect(zombieX, zombieY, 50, 60);
+
+}
+
+function checkingDamge(){
+  playerdamge = collideRectRect(zombieX, zombieY, 50, 60, playerX, playerY, 40, 95);
+  if (playerdamge){
+    lives -= 1;
+    console.log(lives);
+  }
 }
