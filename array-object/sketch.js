@@ -16,8 +16,8 @@ async function setup() {
   createCanvas(windowWidth, windowHeight);
   playerX = width/2;
   playerY = height/2;
-  zombieX = random(-windowWidth, windowWidth);
-  zombieY = random(-windowHeight, windowHeight);
+  zombieX = width/2 + 50;//random(-windowWidth, windowWidth);
+  zombieY = height/2 + 550//random(-windowHeight, windowHeight);
 }
 
 function draw() {
@@ -62,6 +62,7 @@ function checkingDamge(){
   playerdamge = collideRectRect(zombieX, zombieY, 50, 60, playerX, playerY, 40, 95);
   if (playerdamge){
     lives -= 1;
+
     console.log(lives);
   }
 }
