@@ -26,8 +26,8 @@ function draw() {
   showPlayer();
   movingPlayer();
   spawningZombies();
-  //checkingDamge();
-  damgeCooldown();
+  checkingDamge();
+  //damgeCooldown();
 }
 
 
@@ -56,7 +56,9 @@ function movingPlayer(){
 
 function spawningZombies(){
   fill("green");
-  rect(zombieX, zombieY, 50, 60);
+  while (lives >= 0){
+    rect(zombieX, zombieY, 50, 60);
+  }
 
 }
 
