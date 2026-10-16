@@ -10,14 +10,15 @@ let playerX, playerY, zombieX, zombieY;
 let playerSpeed = 3;
 let lives = 3;
 let playerdamge = false; 
+const DAMGECOOLDOWN = 1000;
 
 
 async function setup() {
   createCanvas(windowWidth, windowHeight);
   playerX = width/2;
   playerY = height/2;
-  zombieX = width/2 + 50;//random(-windowWidth, windowWidth);
-  zombieY = height/2 + 550//random(-windowHeight, windowHeight);
+  zombieX = random(-windowWidth + 15, windowWidth + 15);
+  zombieY = random(-windowHeight + 15, windowHeight + 15);
 }
 
 function draw() {
@@ -25,7 +26,8 @@ function draw() {
   showPlayer();
   movingPlayer();
   spawningZombies();
-  checkingDamge();
+  //checkingDamge();
+  damgeCooldown();
 }
 
 
@@ -62,7 +64,14 @@ function checkingDamge(){
   playerdamge = collideRectRect(zombieX, zombieY, 50, 60, playerX, playerY, 40, 95);
   if (playerdamge){
     lives -= 1;
-
     console.log(lives);
   }
+}
+
+function damgeCooldown(){
+  let NOW = millis();
+  if (NOW - DAMGECOOLDOWN >= 5000){
+    checkingDamge();
+  }
+  NOW = millis();
 }
