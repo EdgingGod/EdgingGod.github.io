@@ -70,10 +70,10 @@ function checkingDamge(){
   }
 }
 
-function damgeCooldown(){
-  let NOW = millis();
-  if (NOW - DAMGECOOLDOWN >= 5000){
-    checkingDamge();
-  }
-  NOW = millis();
-}
+// function damgeCooldown(){
+//   let NOW = millis();
+//   if (NOW - DAMGECOOLDOWN >= 5000){
+//     checkingDamge();
+//   }
+//   NOW = millis();
+// }
