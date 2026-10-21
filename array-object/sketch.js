@@ -1,7 +1,7 @@
 // Arrays and object notation
 // Ali Mohamed
 // oct/7
-//used this example to help with zombies following a player, gun following mouse, and bullet tragectory.
+//used this example to help with zombies following a player, gun following mouse,
 //https://editor.p5js.org/p5/sketches/Interaction%3A_Follow3?
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
@@ -15,7 +15,7 @@ let playerdamge = false;
 const DAMGECOOLDOWN = 850;
 let lastDamgeTime = 0;
 let maxZombies = 5; 
-let zombieSpawnDelay = 10;
+let zombieSpawnDelay = 1000;
 let lastspawnTime = 0;
 
 
@@ -34,7 +34,7 @@ function draw() {
   gettingDamge();
   movingZombies();
   displayingLives();
-  showingGun()
+  showingGun();
 
 
 
@@ -116,10 +116,10 @@ function movingZombies() {
 function displayingLives(){
   fill("white");
   textSize(25);
-  text("lives: " + lives, 20, 30)
+  text("lives: " + lives, 20, 30);
 }
 function gameOver(){
-   if (lives <= 0) {
+  if (lives <= 0) {
     background("black");
     fill("red");
     textSize(80);

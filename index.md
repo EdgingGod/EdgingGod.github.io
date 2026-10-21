@@ -9,7 +9,8 @@
 - [bouncing circles](06-circle-bounce)
 - [perlin noise](07-noise)
 - [collision library demo](09-collision)
-
+- [randomized art](10-art)
+ 
 ## Projects
 - [Interactive Scene Assignment](TIC-TAC-TOE)
 - [arrays and object noatation](array-object)
