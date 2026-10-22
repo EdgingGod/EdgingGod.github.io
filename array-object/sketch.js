@@ -3,18 +3,20 @@
 // oct/7
 //used this example to help with zombies following a player, gun following mouse,
 //https://editor.p5js.org/p5/sketches/Interaction%3A_Follow3?
+//https://www.youtube.com/watch?v=iVM7PxTx8Lc&t=228s 
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
 //Veriables
 let playerX, playerY;
 let zombie = [];
+let bullet;
 let playerSpeed = 5;
 let lives = 3;
 let playerdamge = false; 
 const DAMGECOOLDOWN = 850;
 let lastDamgeTime = 0;
-let maxZombies = 5; 
+let maxZombies = 10; 
 let zombieSpawnDelay = 1000;
 let lastspawnTime = 0;
 
@@ -29,14 +31,13 @@ async function setup() {
 function draw() {
   background(0);
   showPlayer();
+  showingGun();
   movingPlayer();
   spawningZombies();
   gettingDamge();
   movingZombies();
   displayingLives();
-  showingGun();
-
-
+  shoting();
 
   gameOver();
 }
@@ -67,7 +68,7 @@ function movingPlayer(){
 
 function spawningZombies(){
   if (zombie.length < maxZombies && millis() - lastspawnTime >= zombieSpawnDelay) {
-    //array and obj notaion
+    //used array
     zombie.push({
       x: random(width),
       y: random(height),
@@ -96,7 +97,6 @@ function checkingDamge(){
 }
 
 function gettingDamge(){
-  // console.log(NOW);
   if (millis() - lastDamgeTime >= DAMGECOOLDOWN){
     lastDamgeTime = millis();
     checkingDamge();
@@ -135,4 +135,16 @@ function showingGun(){
   strokeWeight(10);
   line(playerX, playerY, playerX + cos(angle) * 50, playerY + sin(angle) * 50);
   noStroke();
+}
+
+function shoting(){
+  bullet = {
+    x: width/2,
+    y: height/2,
+    width: 50,
+    height: 60
+  };
+  // if (mousePressed()){
+  //   rect(bullet.x, bullet.y, bullet.width, bullet.height);
+  // }
 }

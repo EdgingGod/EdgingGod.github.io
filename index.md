@@ -10,6 +10,7 @@
 - [perlin noise](07-noise)
 - [collision library demo](09-collision)
 - [randomized art](10-art)
+- [images and sound effects](11-loading-Assates)
  
 ## Projects
 - [Interactive Scene Assignment](TIC-TAC-TOE)
