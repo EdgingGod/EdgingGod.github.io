@@ -16,7 +16,7 @@ let lives = 3;
 let playerdamge = false; 
 const DAMGECOOLDOWN = 850;
 let lastDamgeTime = 0;
-let maxZombies = 10; 
+let maxZombies = 2; 
 let zombieSpawnDelay = 1000;
 let lastspawnTime = 0;
 
@@ -137,14 +137,12 @@ function showingGun(){
   noStroke();
 }
 
-function shoting(){
-  bullet = {
-    x: width/2,
-    y: height/2,
-    width: 50,
-    height: 60
+function spawnBullets(){
+  bullets = {
+    mX: mouseX,
+    mY: mouseY,
+    y: playerY,
+    size: 20,
+    speed: 10
   };
-  // if (mousePressed()){
-  //   rect(bullet.x, bullet.y, bullet.width, bullet.height);
-  // }
 }
