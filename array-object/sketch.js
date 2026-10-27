@@ -1,4 +1,5 @@
 // Arrays and object notation
+// zombie slayer
 // Ali Mohamed
 // oct/7
 //used this example to help with zombies following a player, gun following mouse,
@@ -6,17 +7,21 @@
 //https://www.youtube.com/watch?v=iVM7PxTx8Lc&t=228s 
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
+// learned to use the tan function  and angles to make the gun trgctory and the gun. 
+
 
 //Veriables
 let playerX, playerY;
 let zombie = [];
-let bullet;
+let bullets = [];
+let bulletSpeed = 8;
 let playerSpeed = 5;
 let lives = 3;
+let score = 0;
 let playerdamge = false; 
 const DAMGECOOLDOWN = 850;
 let lastDamgeTime = 0;
-let maxZombies = 2; 
+let maxZombies = 5; 
 let zombieSpawnDelay = 1000;
 let lastspawnTime = 0;
 
@@ -38,7 +43,8 @@ function draw() {
   movingZombies();
   displayingLives();
   shoting();
-
+  checkingZombietDamage();
+  showingScore();
   gameOver();
 }
 
@@ -111,6 +117,7 @@ function movingZombies() {
     zombie[i].x += cos(angle) * 2;
     zombie[i].y += sin(angle) * 2;
   }
+
 }
 
 function displayingLives(){
@@ -118,16 +125,7 @@ function displayingLives(){
   textSize(25);
   text("lives: " + lives, 20, 30);
 }
-function gameOver(){
-  if (lives <= 0) {
-    background("black");
-    fill("red");
-    textSize(80);
-    textAlign(CENTER, CENTER);
-    text("GAME OVER", width / 2, height / 2);
-    noLoop();
-  } 
-}
+
 
 function showingGun(){
   let angle = atan2(mouseY - playerY, mouseX - playerX);
@@ -137,12 +135,63 @@ function showingGun(){
   noStroke();
 }
 
-function spawnBullets(){
-  bullets = {
-    mX: mouseX,
-    mY: mouseY,
-    y: playerY,
-    size: 20,
-    speed: 10
-  };
+function shoting() {
+  for (let i = 0; i < bullets.length; i++) {
+    fill("yellow");
+    noStroke();
+
+    circle(bullets[i].x, bullets[i].y, 8);
+
+    bullets[i].x += cos(bullets[i].angle) * bulletSpeed;
+    bullets[i].y += sin(bullets[i].angle) * bulletSpeed;
+  }
+}
+
+function mousePressed() {
+  let angle = atan2(mouseY - playerY, mouseX - playerX);
+
+  bullets.push({
+    x: playerX + cos(angle) * 50,
+    y: playerY + sin(angle) * 50,
+    angle: angle
+  });
+}
+
+function checkingZombietDamage() {
+  for (let i = bullets.length - 1; i >= 0; i--) {
+    for (let j = zombie.length - 1; j >= 0; j--) {
+
+      if (collideRectCircle(
+        zombie[j].x - zombie[j].w / 2,
+        zombie[j].y - zombie[j].h / 2,
+        zombie[j].w,
+        zombie[j].h,
+        bullets[i].x,
+        bullets[i].y,
+        8
+      )) {
+       score += 1;
+       zombie.splice(j, 1);
+       bullets.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+function showingScore() {
+  fill("white");
+  textSize(25);
+  text("Score: " + score, 20, 60);
+}
+
+function gameOver(){
+  if (lives <= 0) {
+    background("black");
+    fill("red");
+    textSize(80);
+    textAlign(CENTER, CENTER);
+    text("GAME OVER", width / 2, height / 2);
+    noLoop();
+  } 
 }
