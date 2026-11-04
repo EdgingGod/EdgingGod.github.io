@@ -13,6 +13,7 @@
 - [images and sound effects](11-loading-Assates)
 - [Grid Demo](12-grids)
 - [Rectangler grid](13-rectgrid)
+- [Game of Life](14-life)
 ## Projects
 - [Interactive Scene Assignment](TIC-TAC-TOE)
 - [arrays and object noatation](array-object)

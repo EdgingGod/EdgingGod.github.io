@@ -6,9 +6,11 @@ let rows;
 let cols;
 let grid;
 let autoPlayIsOn = false;
+let gossper; 
 
 async function setup() {
   createCanvas(windowWidth, windowHeight);
+  gossper = await loadJSON('gosper.jSon');
   rows = Math.floor(height/CELL_SIZE);
   cols = Math.floor(width/CELL_SIZE);
   grid = generateRandomGrid(cols, rows);
