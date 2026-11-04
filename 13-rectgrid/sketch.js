@@ -88,7 +88,7 @@ function generateEmptyGrid(cols, rows) {
     newGrid.push([]);
     for (let x = 0; x < cols; x++) {
       newGrid[y].push(0);
-    }
+    } 
   }
   return newGrid;
 }

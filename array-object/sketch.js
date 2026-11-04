@@ -129,7 +129,7 @@ function displayingLives(){
 
 function showingGun(){
   let angle = atan2(mouseY - playerY, mouseX - playerX);
-  stroke("blue");
+  stroke("blue"); 
   strokeWeight(10);
   line(playerX, playerY, playerX + cos(angle) * 50, playerY + sin(angle) * 50);
   noStroke();
