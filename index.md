@@ -14,6 +14,7 @@
 - [Grid Demo](12-grids)
 - [Rectangler grid](13-rectgrid)
 - [Game of Life](14-life)
+- [Charcter in Grid](15-charcter)
 ## Projects
 - [Interactive Scene Assignment](TIC-TAC-TOE)
 - [arrays and object noatation](array-object)
