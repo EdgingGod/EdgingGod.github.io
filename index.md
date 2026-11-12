@@ -18,3 +18,4 @@
 ## Projects
 - [Interactive Scene Assignment](TIC-TAC-TOE)
 - [arrays and object noatation](array-object)
+- [2d grid Assighment](2d-grids)
