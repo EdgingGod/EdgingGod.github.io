@@ -12,16 +12,18 @@
 const SQUARE_DIMENSIONS = 10;
 let grid;
 let cellSize;
+// let parottimage;
 
 async function setup() {
   createCanvas(windowWidth, windowHeight);
+  //parottimage = await loadImage()
   if (width < height) {
     cellSize = width / SQUARE_DIMENSIONS;
   }
   else {
     cellSize = height / SQUARE_DIMENSIONS;
   }
-  grid = randomizeGrid(SQUARE_DIMENSIONS, SQUARE_DIMENSIONS);
+  grid = (38, 48);
 }
 
 function draw() {
@@ -46,18 +48,8 @@ function toggleCell(x, y) {
   }
 }
 
-function showGrid() {
-  for (let y = 0; y < SQUARE_DIMENSIONS; y++) {
-    for (let x = 0; x < SQUARE_DIMENSIONS; x++) {
-      if (grid[y][x] === 1) {
-        fill('black');
-      }
-      else if (grid[y][x] === 0) {
-        fill('white');
-      }
-      square(x * cellSize, y * cellSize, cellSize);
-    }
-  }
+function showGrid(){
+
 }
 
 function randomizeGrid(cols, rows) {
