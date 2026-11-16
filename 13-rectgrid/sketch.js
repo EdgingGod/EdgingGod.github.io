@@ -6,9 +6,10 @@ let cols;
 let grid;
 
 async function setup() {
-  rows = Math.floor(windowWidth * 0.85/CELL_SIZE);
-  cols = Math.floor(windowHeight * 0.85 /CELL_SIZE);
-  createCanvas(cols * CELL_SIZE, rows * CELL_SIZE);
+  rows = Math.floor(windowHeight*0.85/CELL_SIZE);
+  cols = Math.floor(windowWidth*0.85/CELL_SIZE);
+  let canvas = createCanvas(cols*CELL_SIZE, rows*CELL_SIZE);
+  canvas.parent('canvas-container');
   grid = generateRandomGrid(cols, rows);
 }
 
@@ -27,17 +28,19 @@ function keyPressed() {
 }
 
 function mousePressed() {
-  let x = Math.floor(mouseX/CELL_SIZE);
-  let y = Math.floor(mouseY/CELL_SIZE);
-
-  //self
-  toggleCell(x, y);
-
-  //neighbours
-  toggleCell(x + 1, y);
-  toggleCell(x - 1, y);
-  toggleCell(x, y + 1);
-  toggleCell(x, y - 1);
+  if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
+    let x = Math.floor(mouseX/CELL_SIZE);
+    let y = Math.floor(mouseY/CELL_SIZE);
+  
+    //self
+    toggleCell(x, y);
+  
+    //neighbours
+    toggleCell(x + 1, y);
+    toggleCell(x - 1, y);
+    toggleCell(x, y + 1);
+    toggleCell(x, y - 1);
+  }
 }
 
 function toggleCell(x, y) {
@@ -88,7 +91,7 @@ function generateEmptyGrid(cols, rows) {
     newGrid.push([]);
     for (let x = 0; x < cols; x++) {
       newGrid[y].push(0);
-    } 
+    }
   }
   return newGrid;
 }
