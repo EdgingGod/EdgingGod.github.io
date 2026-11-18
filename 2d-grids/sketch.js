@@ -1,29 +1,18 @@
-// Grid Demo
-//learn 2d arrays
 
-// if you are hard coding the grid
-// let grid = [[1, 0, 1, 0],
-//             [0, 1, 1, 0],
-//             [1, 0, 0, 1],
-//             [0, 1, 0, 1]];
-// const SQUARE_DIMENSIONS = grid.length;
-
-//if randomizing the grid
 const SQUARE_DIMENSIONS = 10;
 let grid;
 let cellSize;
-// let parottimage;
 
 async function setup() {
   createCanvas(windowWidth, windowHeight);
-  //parottimage = await loadImage()
+
   if (width < height) {
     cellSize = width / SQUARE_DIMENSIONS;
   }
   else {
     cellSize = height / SQUARE_DIMENSIONS;
   }
-  grid = (38, 48);
+  grid = randomizeGrid(SQUARE_DIMENSIONS, SQUARE_DIMENSIONS);
 }
 
 function draw() {
@@ -49,7 +38,6 @@ function toggleCell(x, y) {
 }
 
 function showGrid(){
-
 }
 
 function randomizeGrid(cols, rows) {
