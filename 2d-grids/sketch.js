@@ -1,57 +1,102 @@
 
-const SQUARE_DIMENSIONS = 10;
-let grid;
-let cellSize;
+let grid = [
+  [2,2,1,1,2,2,1,1,2,2],
+  [2,1,1,1,1,1,1,1,1,2],
+  [1,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,1],
+  [2,1,1,1,1,1,1,1,1,2],
+  [2,2,1,1,1,1,1,1,2,2],
+  [2,2,2,1,1,1,1,2,2,2],
+  [2,2,2,2,1,1,2,2,2,2],
+  [2,2,2,2,2,2,2,2,2,2],
+  [2,2,2,2,2,2,2,2,2,2]
+];
 
-async function setup() {
-  createCanvas(windowWidth, windowHeight);
+let colored = [];
+let squareSize = 45;
+let selectedColor = 1;
 
-  if (width < height) {
-    cellSize = width / SQUARE_DIMENSIONS;
+function setup() {
+  createCanvas(600, 600);
+
+  for (let row = 0; row < grid.length; row++) {
+    colored[row] = [];
+
+    for (let col = 0; col < grid[row].length; col++) {
+      colored[row][col] = 0;
+    }
   }
-  else {
-    cellSize = height / SQUARE_DIMENSIONS;
-  }
-  grid = randomizeGrid(SQUARE_DIMENSIONS, SQUARE_DIMENSIONS);
 }
 
 function draw() {
-  background(220);
-  showGrid();
-}
+  background(240);
 
-function mousePressed() {
-  let x = Math.floor(mouseX/cellSize);
-  let y = Math.floor(mouseY/cellSize);
+  let startX = (width - grid[0].length * squareSize) / 2;
+  let startY = (height - grid.length * squareSize) / 2;
 
-  console.log(x, y);
-  toggleCell(x, y);
-}
+  // Draw grid
+  for (let row = 0; row < grid.length; row++) {
+    for (let col = 0; col < grid[row].length; col++) {
 
-function toggleCell(x, y) {
-  if (grid[y][x] === 1) {
-    grid[y][x] = 0;
-  }
-  else if (grid[y][x] === 0) {
-    grid[y][x] = 1;
-  }
-}
+      let x = startX + col * squareSize;
+      let y = startY + row * squareSize;
 
-function showGrid(){
-}
-
-function randomizeGrid(cols, rows) {
-  let newGrid = [];
-  for (let y = 0; y < rows; y++) {
-    newGrid.push([]);
-    for (let x = 0; x < cols; x++) {
-      if (random(100) < 50) {
-        newGrid[y].push(0);
+      if (colored[row][col] == 1) {
+        fill("red");
+      }
+      else if (colored[row][col] == 2) {
+        fill("blue");
       }
       else {
-        newGrid[y].push(1);
+        fill(255);
+      }
+
+      stroke(0);
+      rect(x, y, squareSize, squareSize);
+
+      if (colored[row][col] == 0) {
+        fill(0);
+        textSize(18);
+        textAlign(CENTER, CENTER);
+        text(grid[row][col], x + squareSize/2, y + squareSize/2);
       }
     }
   }
-  return newGrid;
+
+  // Instructions
+  fill(0);
+  textSize(18);
+  textAlign(CENTER);
+  text("Press 1 for RED  |  Press 2 for BLUE", width/2, 45);
+  text("Selected color: " + selectedColor, width/2, 570);
+}
+
+function keyPressed() {
+  if (key == "1" || key == "2") {
+    selectedColor = int(key);
+  }
+}
+
+function mousePressed() {
+  let startX = (width - grid[0].length * squareSize) / 2;
+  let startY = (height - grid.length * squareSize) / 2;
+
+  for (let row = 0; row < grid.length; row++) {
+    for (let col = 0; col < grid[row].length; col++) {
+
+      let x = startX + col * squareSize;
+      let y = startY + row * squareSize;
+
+      if (mouseX > x && mouseX < x + squareSize &&
+          mouseY > y && mouseY < y + squareSize) {
+
+        if (colored[row][col] == selectedColor) {
+          colored[row][col] = 0;
+        }
+        else {
+          colored[row][col] = selectedColor;
+        }
+      }
+    }
+  }
 }
