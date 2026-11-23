@@ -15,6 +15,7 @@
 - [Rectangler grid](13-rectgrid)
 - [Game of Life](14-life)
 - [Charcter in Grid](15-charcter)
+- [Walket OOP](16-walker)
 ## Projects
 - [Interactive Scene Assignment](TIC-TAC-TOE)
 - [arrays and object noatation](array-object)
