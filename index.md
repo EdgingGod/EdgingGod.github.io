@@ -16,6 +16,7 @@
 - [Game of Life](14-life)
 - [Charcter in Grid](15-charcter)
 - [Walket OOP](16-walker)
+- [OOP Fireworks](17-fireworks)
 ## Projects
 - [Interactive Scene Assignment](TIC-TAC-TOE)
 - [arrays and object noatation](array-object)
