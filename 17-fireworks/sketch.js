@@ -4,8 +4,8 @@ const PARTICLES_PER_CLICK = 100;
 
 class Particle {
   constructor(x, y) {
-    this.x = random(windowWidth);
-    this.y = random(windowHeight);
+    this.x = x;
+    this.y = y;
     this.dx = random(-5, 5);
     this.dy = random(-5, 5);
     this.diameter = 5;
@@ -27,7 +27,11 @@ class Particle {
     this.y += this.dy;
 
     //fade away
-    // this.opacity--;
+    this.opacity--;
+  }
+
+  isDead(){
+    return this.opacity <= 0;
   }
 }
 
@@ -41,8 +45,16 @@ function draw() {
   background('black');
 
   for (let firework of theFireworks) {
-    firework.update();
-    firework.display();
+    if (firework.isDead()){
+      let index = theFireworks.indexOf(firework);
+      theFireworks.splice(index, 1);
+    }
+
+    else{
+      firework.update();
+      firework.display();
+
+    }
   }
 }
 
